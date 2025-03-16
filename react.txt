@@ -1,0 +1,758 @@
+https://www.youtube.com/watch?v=pvS3xRTdX90&list=PLdPwRNmUlk0lw0nkFgbqwuFHyprkCT0qz&index=4
+some key features and concepts of react include
+components react allow to devloper to create reusable ui components which encapsulate their own logic and state
+jsx javascript xml is an  extension to javascript used 
+react it enables devlopers to write html like syntac within javascript making it easier to describe and reder componetns
+virutal dom: react uses a virtual representation of the dom which is a lightwieght copy of the acutal
+html dom. it  allows react to efficiently update
+and render only the ncessary components when the application state changes
+
+some key features and concepts of react include
+unidirectional data flow: it follows a undirectional data flow als know as one way binding. it means 
+data in react application flows in a single direction
+from parent to components to child components.
+this help to main a predictable state and make it easier to debug and understandd the application
+
+react hooks:
+introduced in react 16, hooks are function that allow developoers to use state and other react features in functional components, instead oif relying on class components hook provide a simpler and more concise way 
+of managing state and lifecycle events
+
+react has vast ecosystem and tools that complements capabilities it oftern used in combination with 
+oither technologies such as redux for stat managament react router for routing and axios for making api 
+request
+
+react version react 0.3 may 2013
+made public 
+
+react jss enivronemnt setup
+https://github.com/coreybutler/nvm-windows/releases
+nvm setup for multi version node nvm list to check
+for installing old version node
+nvm install 18.16.0
+then use nvm list-> nvm use 18.16.0
+npm i or install  -> to check it file avaiable for checking update
+to uninstall package
+npm uinstall react-validation  (copy from package.json)
+
+react js function components
+it is one of the core building blocks of reacts
+made of pieces of components
+types of components
+functional component
+clss components
+pure component
+high order components
+controlled components
+uncontrolled components
+
+export const User = () => {
+  return (
+    <div>User Sam Bajracharay</div>
+  )
+}
+use import {user} fom './user'; when need to call mulitple function
+
+react js class components part 7
+it bread and butter fo most modern web apps. these components are
+siple clsses made up of multiple functions that add functionality to the
+application. all class based components are child clsses for the 
+components class of react js
+rce then tab
+
+function Common(){
+  return <div>common compontns</div>
+}
+to use function use  {common()} , use curly bracket
+or <Common/>
+
+react js with jsx javascipt extension
+
+react js click event and function
+event handler determine what action is to be taken whenver
+an event is firest. this could be a button click or change in a text input
+<button onClick = {hello()}> hello </button>
+parenthesis shouldnt be used.otherwise it will automatically trigger
+<buton onClick ={demo}>Cclick me</buton>
+ <button onClick = {()=>alert("hello")}>click me</button>
+ <button onClick = {()=>demo()}>click me</button>
+
+ react js state and function
+ it is an updatable structure that is used to contain data or 
+ information about the components.the state in a component can change
+ over time.it determine behaviour of the components and how it
+ will render. they are also responsible for making a components
+ dynamic and interactive
+ a state must be kept as simple as possible .it can be set by using
+ the setstate() method and calling setstate() method triggers
+ ui updates. to set an initial state before any interaction occurs
+we need to use the getinitialState() method
+useState
+import { useState } from 'react';
+  let [data, setData] = useState("sam bajracharay");
+  sam bajrcharay store in Data
+
+  setData function trigger 
+  function Counter(){
+    const [count, setCount] = useState(0);
+    const increment =()=>{
+        setCount(count + 1);
+    }
+    return(
+        <div>
+            <p>Count: {count}</p>
+            <button onClick={increment}>Count</button>
+        </div>
+    )
+}
+
+React js state class components
+import React, { Component } from 'react'
+import "./App.css";
+class App extends Component {
+constructor(){
+  super();
+  this.state ={
+   data: 1,
+  };
+}
+demo(){
+  // alert("class components");
+  this.setState(
+    // {data: "sam bajracharya",}
+   { data: this.state.data + 1,}
+  );
+}
+render(){
+  console.log(this.state.data);
+  return (
+    <>
+    <h1>{this.state.data}</h1>
+    <button onClick={()=>this.demo()}>click me</button>
+    </>
+  )
+}
+}
+
+export default App
+
+
+react js props function components.
+pops stand for properties they are read only components
+it is an object which store the values of attributes of a tag
+and work similar to the html attributes.
+props are immutable so cannot modify the props from inside the components
+
+we can dd attributers called props. these attributes are 
+available in the components as this.props and can be used to render
+dynamic data in our render method.
+const App = () => {
+  const [name, setName] = useState("sam bajracharya");
+  // const userData = [
+  //   {name:'sam', age: 25, email: 'sam@gal.com'},
+  //   {name:'sam2', age: 75, email: 'sam@wgal.com'},
+  //   {name:'sam3',age: 15, email: 'sam@ggal.com'}
+  //   ];
+  return (
+<>
+{/* {userData.map((user,index)=>(
+<UserCard
+key = {index}
+name ={user.name}
+age = {user.age}
+email = {user.email}
+/>
+))} */}
+<UserCard name={name} />
+<button onClick={()=> setName("hero honda")}>Update Name</button>
+</>
+
+  )
+}
+export default function UserCard(props2) {
+  // const {name,age,email} = props2;
+  return (
+<>
+{/* <h1>hello world {props.name}</h1> */}
+{/* <p>{name}</p>
+<p>{age}</p>
+<p>{email}</p> */}
+</>
+  )
+} rfc for default export function
+rcc shortcut for components
+
+React Props With Class Component
+usercard.jsx
+import React from 'react'
+
+export default function UserCard(props2) {
+  // const {name,age,email} = props2;
+  return (
+<>
+{/* <h1>hello world {props.name}</h1> */}
+{/* <p>{name}</p>
+<p>{age}</p>
+<p>{email}</p> */}
+</>
+  )
+}
+//
+app.jsx
+import React, { Component } from 'react'
+import './App.css';
+import UserList from './UserList';
+
+export default class App extends Component {
+constructor(){
+  super();
+  this.state ={
+    name: "hoer honda"
+  }
+}
+ 
+  render() {
+    return (
+      <>
+      <div className="App">
+        <h1>Props in React</h1>
+        {/* <UserList name="sam bajracharya"
+        email ="szm@gmail.com"
+        /> */}
+       <UserList name={this.state.name}
+        email ="szm@gmail.com"
+        />
+        <button onClick={()=>this.setState({name:"dio"})}>Update Props</button>
+      </div>
+      </>
+    )
+  }
+}
+
+Reactjs get input box value (without form)
+the onChange event handler is a prop that you can pass into jsx
+<input> lements. this props is provided by react so that your
+application can listen to user inout in rel time when an onChange
+even occurs. the prop will call the function you passed as its parameter
+function handleChange(event){
+  console.log(event.target.value)
+}
+<input onChange ={handleChange} />
+
+--
+import React, { useState } from 'react'
+import "./App.css";
+
+const App = () => {
+  const [inputValue, SetInputValue] = useState("");
+  const [inputValueShow, setinputValueHide] = useState(false);
+
+  const handleChange = (event) => {
+    console.log(event.target.value);
+    SetInputValue(event.target.value);
+    //remove submit value
+    setinputValueHide(false);
+  }
+  return (
+  <div className="App">
+    {/* <h1>{inputValue}</h1> */}
+    <h1>{inputValueShow ? inputValue :''}</h1>
+    <input type="text" onChange={handleChange} />
+    <button onClick={()=>{setinputValueHide(true)}}>show me</button>
+  </div>
+  )
+}
+
+export default App
+
+
+ React Hide Show & Toggle
+ const App = () => {
+  const [status, setStatus] = useState(true);
+  return (
+    <div className="App">
+      <h1>SHow and hide</h1>
+      {status ? <div className="status">Content</div>: null}
+      <button onClick={()=>setStatus(false)}>Hide</button>
+      <button onClick={()=>setStatus(true)}>Show</button>
+      <button onClick={()=>setStatus(!status)}>Toggle</button>
+    </div>
+  )
+}
+react js form handling
+import React,{useState} from 'react'
+
+export default function FormHandling() {
+    const [formData, setFormData] = useState(
+{
+username:'',
+email:'',
+password:'',
+isSubscribed:'',
+role:''
+
+} );
+const handleChange = (event) => {
+    const {name, value, type, checked} = event.target;
+    const fieldValue = type === 'checkbox' ? checked : value;
+
+    setFormData({
+        ...formData,
+        [name]:fieldValue
+    });
+}
+const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log('Form Data', formData);
+}
+  return (
+   <>
+   <form onSubmit={handleSubmit}>
+    <div>
+        <label htmlFor="username">username:</label>
+        <input type="text" name="username" 
+        id="username"
+        value={formData.username}
+        onChange={handleChange}
+        />
+    </div>
+    <div>
+        <label htmlFor="email">Email:</label>
+        <input type="email" name="email" 
+        id="email"
+        value={formData.email}
+        onChange={handleChange}
+        />
+    </div>
+    <div>
+        <label htmlFor="password">Password:</label>
+        <input type="password" name="password" 
+        id="password"
+        value={formData.password}
+        onChange={handleChange}
+        />
+    </div>
+    <div>
+        <label htmlFor="isSubscribe">Subscribe:</label>
+        <input type="checkbox" name="isSubscribed" 
+        id="isSubscribed"
+        value={formData.isSubscribed}
+        onChange={handleChange}
+        />
+    </div>
+    <div>
+        <label htmlFor="role">Role:</label>
+    <select name="role" id="role" 
+    value={formData.role}
+        onChange={handleChange}>
+    <option value="">Select Role</option>
+    <option value="admin">admin</option>
+    <option value="user">user</option>
+    <option value="guest">Guest</option>
+    </select>
+    </div>
+    <button type="submit">Submit</button>
+   </form>
+   </>
+  )
+}
+
+react js conditional rendering
+conditional rendering in rect allows you to show or hide
+component based on certain conditions. it is a powerful features
+that helps you create dynamic and interactive user interfaces
+export default function Profile() {
+    const isLoggedIn = true;
+    const items = ["apple", "banana","orange"];
+    const isAuthenticated = true;
+    
+  return (
+   <>
+ {/* {isLoggedIn ? <h2>Welcome User</h2>: <h2>Welcome Guest</h2>} */}
+{
+items.length > 0 ? (
+    <ul>
+        {
+          items.map((item, index)=>
+            <li key={index}>{item}</li>
+          )  
+        }
+    </ul>
+) : (
+    <p>No items to display</p>
+)
+}
+<div>{isAuthenticated && (
+    <button onClick={()=>{console.log("log out");}}>Logout</button>
+)}</div>
+   </>
+  )
+
+  React Js form validation
+it refers to the process fo validating user input within a form to ensure that it meets
+certain criteria or constraints before it is submitted , it help in preventing User from
+submiiting incorrect or incomplete data and provides a better user experience by giving feedback
+on the input errors
+import React, {useState} from 'react'
+
+export default function FormValidation() {
+const [name, setName] = useState("");
+const [email, setEmail] = useState("");
+const [password, setPassword] = useState("");
+const [errors, setErrors] = useState({});
+const [submittedData, SetSubmittedData] = useState(null);
+const validateForm = () =>{
+let isValid = true;
+const newErrors = {};
+if (!name.trim()){
+newErrors.name = "Name is required";
+isValid = false;
+}
+if (!email.trim()){
+    newErrors.email = "Email is required";
+    isValid = false;
+    }else if(!/\S+@\S+\.\S+/.test(email)){
+newsErrors.email = "Email is invalid";
+isValid = false;
+    }
+    if (!password.trim()){
+        newErrors.password = "Password is required";
+        isValid = false;
+        }else if(password.length < 6){
+newsErrors.password
+ ="password should be more than 6"
+        }
+setErrors(newErrors);
+return isValid;
+}
+const handleSubmit = (event) => {
+event.preventDefault();
+if(validateForm()){
+const submittedDate = {
+    name, email, password
+};
+SetSubmittedData(submittedData);
+console.log("form submited", submittedData);
+}
+
+}
+  return (
+    <>
+    <form onSubmit={handleSubmit}>
+       <div>
+        <label>Name:</label>
+        <input type="text" name="" id="" value={name} onChange={(e)=>setName(e.target.value)} />
+        {errors.name && <span className="error">{errors.name}</span>}
+       </div>
+       <div>
+        <label>Email:</label>
+        <input type="email" name="" id="" value={email} onChange={(e)=>setEmail(e.target.value)} />
+        {errors.email && <span className="error">{errors.email}</span>}
+       </div>
+       <div>
+        <label>password:</label>
+        <input type="password" name="" id="" value={password} onChange={(e)=>setPassword(e.target.value)} />
+        {errors.password && <span className="error">{errors.password}</span>}
+       </div>
+<button type="submit">Submit</button>
+    </form>
+    {
+submittedData && (
+    <div>
+        <h2>Submitted Data</h2>
+        <p>Name: {submittedData.name}</p>
+        <p>Email: {submittedData.email}</p>
+        <p>Password: {submittedData.password}</p>
+    </div>
+) }
+    </>
+  )
+}
+
+React Js Pass Function as Props
+you can pass function as props to child components. this allow you to 
+communicate and share functionality between different parts fo your application
+import React from 'react'
+
+export default function Users(props) {
+    console.log(props);
+   
+  return (
+   <>
+   <h1>Users</h1>
+   <button onClick={props.handleClick}>click em</button>
+   <p>Count {props.count}</p>
+   <button onClick={props.increment}>Increment</button>
+   </>
+  )
+}
+import React, {useState} from 'react'
+import './App.css';
+import Users from './Users';
+
+
+const App = () => {
+  const handleButtonClick = () => console.log("button clicked");
+  const [count, SetCount] = useState(0);
+  const incrementCount = () => {
+    SetCount(count + 1);
+  }
+  return (
+    <div className="App">
+  <h1>React pass function</h1>
+  <Users handleClick = {handleButtonClick}
+  count = {count} increment = {incrementCount}
+  />
+
+    </div>
+  )
+}
+
+export default App
+
+Life Cycle Methods
+it refers to a set of functions that are invoked at various stages of a components
+life cycle.these methods allow you to perform specific task or execute code
+at different points during the components existence
+in prvious versions of react, there were several life cycle methods available but with the
+introduction of react 16.3 and later some of these methods have been deprected in favor of
+a new set of methods based on the concept of react hooks however the older life cycle methods
+are still supported and can be used in existing codebases.
+3phases mounting, updating, unmounting //https://www.youtube.com/watch?v=4vJC5wKhvyI&list=PLdPwRNmUlk0lw0nkFgbqwuFHyprkCT0qz&index=20
+
+the main life cycle methods in react
+mounting phase
+constructor():
+this method is called when a components is being initialized and constructed.it is typically
+used for initializing state and binding event handlers
+static getDerivedStateFromProps() this method is invoked before rendering both on the inital mounting
+and on subsequent updates.it allows you to update the state based on changes in props
+render():
+this method is responsible for rendering the components jsx markup
+componentDidMount(). this method is called immediately after the components has been mounted
+to the dom. it is commonly used to initiate api calls or set up event listeners
+
+updating phase:
+static getDerivedStateFromProps()/ as mentioned earlier this method is also called during the 
+updating phase when new props are received
+
+shouldcomponentUpdate(): This method determines whether the component should re render or not
+it can be used to optimize performance by avoiding unnecessary re-renders
+
+render(). the render method is called again to update the component's ui
+getSnapShotBeforeUpdate(). this method is called right before changes are committed to the dom
+it allows you to capture information from the dom before it is potentially changed
+
+componentsDidUpdate(): this method is invoked after the component has been re-rendered and the
+changes have been applied to the dom.it is often used for side effects such as updating the dom
+based on prop or state changes
+
+unmounting phase
+componentwillunmount()
+this method is called right before the components is removed from the dom .it can be used
+to perform cleanup task like removing event listeners or cancelling api requests.
+
+when it calls the lifecycle method in react
+when component is loaded
+when components is updated wih state and props
+when components is removed
+
+
+react js constructor lifecycle
+
+the constructor method is part of the components life cycle and is invoked during the 
+mounting phase. the constructor is a special method that gets called when an instance
+of a component is created
+
+purpose
+the constructor method is primarly used for initializing the components state and binding event
+handlers.
+it is also used to set up the initial values or state based on components props
+the construcotr is called before the component is mounted to the dom
+in a class based component the constructor method is defined within the component class
+the constructor take a props parameter which is optional it should be passed to the super() metod to
+call the constuctor of the parent class(usually component).
+the state can be initialized within the constructor by assigning an object to this.state
+class App extends Component {
+constructor(){
+  super();
+  console.log("constrcutor methiod");
+}
+
+  render(){
+    console.log("render methiod");
+  return (
+    <div>Life Cycle Method</div>
+  )
+}}
+
+reactjs render lifecycle
+it is the techniue tht can redirect a page with the help of function render(). most importantly
+render a function we can use to define the html code within the html elements it helps to display
+certin views in the ui using certain logic defined in the render  function and returns the output
+
+purpose
+react renders html to the wb page by using a function called render()
+the purpose of the function is to display the specified html code inside the specified html elements
+in the render() method, we can read props and state and return our jsx code to the root components
+of our app.
+in the render () method we cannto change the state and we cannot cause side effect(such as making
+an http request to the webserver)
+//rendermethod.jsx
+import RenderMethod from './RenderMethod';
+const App = () => {
+  // const [name, setName] = useState("sam bajracharay");
+  return (
+   <div className="App">
+    {/* <RenderMethod name={name}/> */}
+    {/* <button onClick={()=>setName("Bajracharay")}>Update Name</button> */}
+    <RenderMethod />
+   </div>
+  )
+}
+
+reactjs 
+componentDidMount
+method is a life cycle method that is invoked immediately after a component has
+been mounted to the dom. it is a good place to perform initializations, side effects
+or interact with external apis
+purpose
+making api call to fetch data from server
+setting up event listeners or subscriptions
+manipulating the dom or interacting with external libraries
+performing additional initialization or setup tasks.
+
+import React,{Component} from 'react'
+import './App.css';
+
+class App extends Component {
+constructor(){
+  super();
+  this.state = {
+count:0,
+
+  };
+  console.log("constructor called");
+}
+incrementCount = () =>{
+this.setState((prevState)=>({
+  count:prevState.count + 1,
+}))
+}
+
+componentDidMount(){
+  console.log("constructor22 called");
+}
+render(){
+  console.log("render");
+  return (
+    <>
+    <div className="App">
+    <h1>Lifecycle component did mount</h1>
+    <h2>Count:{this.state.count}</h2>
+    <button onClick={this.incrementCount}>Increment</button>
+    </div>
+    </>
+      )
+}
+}
+
+export default App
+
+
+componentDidUpdate 
+this method allow us to execute the react code when the component is updated all the network request that are to be made when the props passed to the
+component changes are coded however
+purpose
+handle side effect and perform additional operations after  component update
+respond to changes in props or state
+update the dom or interact with external libraries after a component update
+perform asynchronous operations based on prop or state changes
+optimize performance by avoiding unncessary updates or expensive calculations.
+
+react shouldcomponentupdate
+in react should component update is a lifecycle mehtod avaiable in class components. its purpose is to optimize rendering 
+performance by allowing you to control when a component should updat and re-render.
+by default, when a component sate or props change, react re-renders that components to reflect the changes. however rerendering
+can be an expensive operation especially for complex  components or components trees. in some cases, rendering may be unnecessary
+if the new state or orps do not affect the components output. this is where shouldcomponentUpdate becomes valuable
+
+purpose
+your implementation of shouldcomponentUpdate should return a boolean value. 
+if it return true, the component will re-render as usual. if it returns falsem, the components will not rerender even if the props
+or state have changed
+
+react js componentwillunmount
+it was a lifecycle method used in class components, however it is important to note that as of react 17, this method has been
+deprecated and is no longer recommended for use react introduced the unmounting phase where components are removed from the dom
+and componentwillunmount used to be a part of this phase.
+the componentwillunmount method was invoked right before a component was removed from the dom and destroyed. it provided an
+opportunity to perofrm any necessary cleanup taks, such as cancelling timers, clearing subscriptionss, or releasing resources
+to avoid memory leaks.
+purpose
+it is called just beore a component is removed from the dom and destroyed.
+its primary purpose was to avoid memory leaks by cleaning, up resources associated with the components.
+with the introduction of react hooks and the useeffect hook, cleanup taks can be handled more easily and efficiently in
+functional components.
+
+//react js hooks lifecycle  // life cycle update
+function that allow you to use state and other react features in functional components whihc were traditionally stateless.
+hooks were introduced in react version 16.8 to provide a ore elegant and reusable way to manage state and lifecycle behaviors
+in functional components.
+
+before hooks, react components were mainly created using class components. which allowed the use of lifecycle methods and state
+however class components can become cumbersome and harder to maintain as the components logic grows hooks provide an 
+alternative way to write components in a more concise and readable manner.
+list of hooks
+usecallback
+usecontext
+usedebugvalue
+usereducer
+useeffect
+useState
+useRef
+UselmperativeHandle
+useLayoutEffect
+useMemo
+useSyncExternalStore
+useTransition
+useInsertionEffect
+useDeferredValue
+useId
+
+what is useEffect Hook?
+it is a built in hook that allows you to perform side effects in functional components. side effects typically involve tasks
+that should be executed after the component hs rendered, such as fetching data from an api, subscribing to event listeners, or
+updating the document title. it is analogous to lifecycle methods like componentDidMount, componentDidUpdate and componentwillunmount
+in class components.
+useEffect(()=>{
+  side effect code here
+  this code will run after every render
+  it may perform any cleanup if needed
+  return()=>{
+    thsi code will run when the component is unmounted or before the next render
+  }
+}, []);
+useeffect, render everytime , updating, it will run everytime
+
+useffect with condition
+
+styles for react components
+react is a jas library for building user interfaces. react makes it painless to create interactive  Uis. Design simple views for each state in your application and react will efficiently
+update and render just the righ component when your data changes.
+there are different ways to styling react js components
+inline css, normal css, css in js, css module, sass and scss , styled components(external package)
+//boostrap installation
+
+array with map
+it a fundamental data structure in computer programming that represent a collection of elements stored in contiguous block of memory.
+these elements can be of the same or different data types such as number, strings, objects, or even other arrays, arrays are commonly used
+to organize and manipulate a group of related values.
+in most programming languages, including javascript (used in react js) arrays are zero indexed which means the first element is accessed
+with an index of 0 the second element with an index of 1 and so on.
+
+array with map
+arrays offer various methods and properties to manipulate and work with the data they store, such as map(), filter(), reduce(), length etc. these methods
+allow developers to perform operations on the array elements easily and efficiently.
+
+using map() over a traditional for loop in react js has several advantages the map() function provides a more concise and expressive way to perform
+transformations an arrays and is often preferred for rendering list fo elements, here are some reasons why using map() is common in react js
