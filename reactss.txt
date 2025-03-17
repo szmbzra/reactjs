@@ -769,4 +769,89 @@ care of uniquely identifying each rendered component in the list.
 cleaner code: using map() can result in more concise and cleaner coe. it reduces boilerplate and increase code readability.
 
 react nest map
-https://www.youtube.com/watch?v=SatJdgYt_Ms&list=PLdPwRNmUlk0lybMtRRF5xrvFd1UEo6UAR&index=34
+it refers to using the map function inside another map function. this approach is commonly used to handle
+data that has multple levels of nesting such as an array or an array of objects that contain arrays
+
+when you encounter nested data structures in react you can use nested mao function iterate through the data
+at each level and render the corresponding ui components.
+
+//what is fragments?
+it a features that allows you to group multiple elements together without introducing an additional
+wrapping elements in the dom. fragments are used to return mulitple elements from a components render
+method adding unnecessary markup to the resulting html
+before fragements were introduced in react devlopers often had to wrap mulitple elements
+in  single container elements even if that container element didnt serve any semantic purpose other than
+to group those elements together.
+Good question! The use of Fragment in React can seem a bit redundant when you can use the shorthand syntax (<>...</>), but here are some reasons why Fragment import might still be useful:
+
+Key Attribute Support: The shorthand (<>...</>) does not allow you to pass attributes. If you need to pass a key (e.g., when rendering a list of items where each fragment needs a unique key), you'll need to use <Fragment> explicitly.
+import { Fragment } from "react";
+const items = [1, 2, 3];
+const list = items.map((item) => (
+   <Fragment key={item}>
+      <h1>Item {item}</h1>
+      <p>Description for item {item}</p>
+   </Fragment>
+));
+
+// react lifting state up
+it is a design pattern used to manage shared state among mulitple component by moving the state from
+a lower level component to higher level cmponent in the component tree.
+this pattern is especially useful when two or more component need to share the same state or when
+a child component needs to update the state of its parent or another sibling component.
+
+how lifting state up works in react
+identify the shared state: when you have two or more component that need access to the same
+state or need to synchronize their data you can identify the common state that needs to be lifted up.
+
+move the state up: instead of keeping the state in one of the child components, you move it to the parent
+component that is an ancestor to all the component that require access to the state. this parent component
+now becomes the single source of truth for the shared state.
+
+pass the state down as props: after moving the state to the parent component, you pass it down to the child
+
+components as props. this allows child components to read and use the state as needed.
+
+modify the state through callbacks: to update the state from child components, you pass down callbacks
+functions(also as props) fromt the parent, when a child component needs to change the state, it calls the
+callback, and the parent components handles the state update. this way, the parent component controls
+how the state is modified.
+
+//pure components
+it is a specific type of component that is designed to optimize performance by minimizing
+
+unnecessary rendersin react component are re-rendered whenever their state or props change
+however if a component render output is solely determined by its props and state, and they
+have not changed there is no need to re-render the component. this is where pure component
+come into play
+
+pure comment in react is a class component that extends the react.purecomponent class or since
+react 16.6 it can also be written as a functional component that utlilize the react.memo() high
+order component .the main characteristic of a pure  component is that it automatically implements a
+ shallow comparsion of props and state to decide whether to re-render or not.
+
+ // react memo
+ it is a higher order component used to optimize functional components by preventing unnecessary re-renders
+ it is a performance optimization technique aimed at improving the efficiency of react applications.
+
+ when a functional component is wrapped with react.memo, react will automatically memorize the component.
+ memoization means that react will store the rendered output of the component and only re-render it when
+ the component props have changed if the props remain the same, react will reuse the previously rendered
+ output. avoiding the need to recalculate or re-render the component.
+
+ //react useMemo Hook
+ the usememo hook in react is used to memorize the result of acomputation
+ and optimize the performance of functional component. its one of the built
+ in hooks that react provides to hel us manage expensive calculation or data processing efficiently
+ the basic purpose of usememo is to cache the return value fo a function and  only recompute it when the
+ dependencies specified in the second argument of the useMemo call change. this behaviour prevents
+ unnecessary recalculations and can significantly improve the performance of our components.
+
+ //react ref
+ it is special attribute that can be used to access or reference a dom element or a react component
+ instance.it provide a way to interact direclty with dom elements or components, enabling you to perform
+ certain operations like focusing an input field accessing the dimensions of an element, or triggering
+imperative animations.
+
+//useRef
+https://www.youtube.com/watch?v=8QvBORFU59Q&list=PLdPwRNmUlk0lybMtRRF5xrvFd1UEo6UAR&index=42
