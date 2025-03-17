@@ -756,3 +756,17 @@ allow developers to perform operations on the array elements easily and efficien
 
 using map() over a traditional for loop in react js has several advantages the map() function provides a more concise and expressive way to perform
 transformations an arrays and is often preferred for rendering list fo elements, here are some reasons why using map() is common in react js
+
+declarative approach map() is a higher order function which means it follows a declarative programming paradigm, instead of explicity defining the iteration step you only describe what
+you want to achieve. this make the code easier to read and understand
+
+immutable operation: react encourages immutable data handling and map() inherently creates a new array with the transformed elements leaving the original array unchanged. this is
+useful for avoiding side effects and making the application more predictable.
+
+no need to manage index: when using map(), you dont have to manually manage the array index(as you would in a for loop) when rendering elements in react. the keyp prop automatically take
+care of uniquely identifying each rendered component in the list.
+
+cleaner code: using map() can result in more concise and cleaner coe. it reduces boilerplate and increase code readability.
+
+react nest map
+https://www.youtube.com/watch?v=SatJdgYt_Ms&list=PLdPwRNmUlk0lybMtRRF5xrvFd1UEo6UAR&index=34
