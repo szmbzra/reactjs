@@ -847,11 +847,41 @@ order component .the main characteristic of a pure  component is that it automat
  dependencies specified in the second argument of the useMemo call change. this behaviour prevents
  unnecessary recalculations and can significantly improve the performance of our components.
 
- //react ref
+ //react ref (use for class components)
+ Class Components: React.createRef is typically used in class components to create a ref.
  it is special attribute that can be used to access or reference a dom element or a react component
  instance.it provide a way to interact direclty with dom elements or components, enabling you to perform
  certain operations like focusing an input field accessing the dimensions of an element, or triggering
 imperative animations.
 
 //useRef
-https://www.youtube.com/watch?v=8QvBORFU59Q&list=PLdPwRNmUlk0lybMtRRF5xrvFd1UEo6UAR&index=42
+Functional Components: useRef is specifically designed for functional components introduced with React Hooks.
+it is a hook that allows you to create a mutuable reference to an element or a value that persists across
+renders. it is commonly used for accessing and interacting with dom elements. managing focus and storing
+values that should not trigger a re-render when they change.
+
+the primary use cases for useref
+accessing dom elements: you can use useref to get a reference to a dom element and interact with the direclty
+like changing its style, adding event listeners, or triggering imperative functions.
+
+storing mutuable values: since the ref object persists across renders, you can use it to store values that
+need to be accesses and updated without triggering re-renders.
+
+caching exensive calculations: if you have a computation that is costly in terms of performance and doesnt
+depend on the components state or props, you can useref to store the result of the computation and reuse
+it across renders
+
+//react forwardRef
+it is a special function in react that allows you to forward a ref from a parent component to a child component.it is primarily used when you need to access
+the dom element or component instance of the child component from its parent.
+the primary use cases for forwardref are:
+accessing dom elements: if you need to focus, scroll, or perform other dom related operations on a child
+component, you can use forwardRef to get access to the child's dom elements.
+
+exposing child components functions: you might have some functions in the child components that you
+want to trigger from the parent component. using forwardRef, the parent component can call those functions
+directly on the child component instance.
+useImperativeHandle (when need to access function in parent via ref)
+
+react controlled components
+https://www.youtube.com/watch?v=nmj4_ndaufY&list=PLdPwRNmUlk0lybMtRRF5xrvFd1UEo6UAR&index=44
