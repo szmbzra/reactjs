@@ -884,4 +884,219 @@ directly on the child component instance.
 useImperativeHandle (when need to access function in parent via ref)
 
 react controlled components
-https://www.youtube.com/watch?v=nmj4_ndaufY&list=PLdPwRNmUlk0lybMtRRF5xrvFd1UEo6UAR&index=44
+it is a component whose state is controlled entirely by the react component itself. the component
+state is managed by react, and any changes to the components state are done through react setstate(0
+) method. this allows react to have full control over the components behaviour and enables 
+synchronization with the user interface control over the component's behaviour and enables synchronization
+with the user interface.
+the primary use cases for controlled component are:
+state management. the components state is stored within the components itself using the useState or this.state
+(for class components) hook. this state is used to determine the current value of the components.
+props as input: controlled components receive their current value as a prop from their parent component. the 
+parent component maintains the state, passwing it down to the controlled components as a prop.
+
+what is controlled components?
+event handling: any changes to the components value(eg user input) are captured through event handlers, such as
+onChange, onClick etc.
+updating state: when an event occurs (eg: user types in an input field), the event handler calls setState(or equivalent) to update
+the components state with the new value.
+re-rendering: when the state is updated, the components is re-rendered with the new  value, and the user interface reflects
+the latest state.
+single source of truth: the components value is solely derived from its state. so the state becomes the single source of truth
+for the components value..
+
+
+what is uncontrolled components
+it is a component whose state is managed by the dom rather than being controlled by
+react itself. unlike controlled components, where react handles the state and updates
+uncontrolled components rely on the underlying dom to keep track of the components
+state. this means that the state is not directly accessible through react's setState or useState mechanism
+
+the primary use cases for uncontrolled components are:
+
+no explicit state: uncontrolled components do not have an explicit state defined within the react components.
+ref for access: instead of using state, you typically use a ref to access the current value of the components. ref
+are a way to directly interact with the dom elements in react.
+
+dom as source of truth: the components values is managed by the dom itself. for egL in an uncontrolled input components
+the value is controlled by the value attribute of the html input elements.
+
+event handling: event handlers are used to capture changes to the components value similar to controlled
+components. event like onChange , onClick etc, are still utilized.
+
+no re-renders: since there is no state being updated, changes to the components value wont trigger 
+re-renders of the component. this can lead to potential inconsistencies between react's virtual dom and
+the actual dom.
+
+react higher order components
+high order component(hoc) is a design pattern in react that involves wrapping a component with another function 
+or component in order to enhance it behavior or provide additional props. this pattern is commonly used to reuse
+component logic, hangle cross cutting concern, and make components more modular.
+the primary use cased for hoc are:
+reusable logic: hocs are design pattern in react used to share and reuse components logic across multiple components
+function wrapper: a hoc is a function that takes a component and returns a new component with enhanced features or behaviour
+
+composition: hocs enable component composition by wrapping one component with another to augment its functionality.
+
+cross cutting concerns: they help manage cross cutting concerns like state management, authentication, logging and data fetching
+
+props injection. hocs can inject addtional prop, sate or functions into the wrapped component.
+
+modularity: by separating concerns.hocs make components more modular and focused on specific taks.
+
+code reusability: common logic can be encapsulated in hocs reducing code duplication across components.
+
+usecallback hooks ?
+it in react is used to optimize the performance of your components by memoizing functions ensuring
+that they are not recreated on every render.
+
+the primary use cases for usecallback are:
+function memoization: use callback memoizes  (caches) a function, ensuring that the same function
+instance is returned on subsequent reners as long as it dependencies remain unchanged, this is 
+particularly useful to prevent unnnecessary re-renders of child components that receive functions
+as props.
+
+dependencies array: the second argument to usecallback is an arry of dependencies.if any of these dependencies change
+between renders, the memoized function will be recreated; otherwise, it will return the previously memoized function. make
+sure to list all variables that the functions relies on.
+
+useCase - event handlers: when passing event handlers to child components, using usecallback prevents those handlers from
+being recreated on each render. this helps avoid unnecessary re-renders of child components as they wont treat the functions
+as new prop ech time the parent re-renders.
+
+performance optimization: without usecallback each render of a  component that uses a funcion without memoization
+would crete a new function instance, this can lead to increased memory usage and potential performance bottlenecks.
+
+usage with useeffect: when using useeffect, its important to include any function from the components scope that are  used 
+inside the effect in the dependencies array. using callback in conjuction with useeffect can ensure that effects are only re-run
+when necessary.
+
+caveats: while usecallback can help optimize performance. its important not to overuse  it. not eery functions needs to be
+memoized. overusing usecallback might lead to unnecessary complexity in your codebase.
+
+comparing with usememo: use callback and usememo are similar in that they both memoize values. the difference is that
+use callback for functions and usememo for non function values.
+
+//usereducer hook
+usereducer hook is a built in hook that allows yout to manage complex state logic in more organized and predictable manner,
+especially when dealing with state transitions that involve mulitple actions. it is an alternative to using the useState
+hook when the state management becomes more intricate.
+the primary use cases for usereducer are:
+state and dispatch: the usereducer hook takes two arguments a reducer functions and an initial state. it returns an array
+with two elements. the current state and a dispatch function. the dispatch function is used to send actions to the reducer
+,which then processes the action and returns a new state.
+
+reducer functions: the reducer function is responsible for handling the state transitions based on the actions dispatched.it take two arguments. the current state and the actions being dispatched.it returns the new state based on the action's logic.
+actions: it are objects that describe what kind of state change you want to perform they typically have a type property
+to identify the actions type, and additional data as needed.
+
+//usecontext hook
+it is a react hook that provides a way to access the value of a context directly in functional components without having to explicitly pass down props through intermediary
+components. the usecontext hook is part of the context api which is a mechanism in rect that allows data to be passed through the component tree without having to pass props down manually at every level.
+the primary use cases for useContext are:
+theme switching: you can useContext to manage a theme throughout your app instead of passing
+the theme prop to every component that needs it you can define a themecontext and use
+usecontext to access the current theme directly in components.
+
+authentication: managing user authentication state across your app is a common use case
+for usecontext. you can create an authcontext to store the user authentication status and details. components can then use usecontext to acces this information and conditionally
+render ui components based on the user authentication status:
+
+localization:if your app supports mulitple language, you can use usecontext to provide language/locale information to various components without passing props down the component tree.
+
+global state management. while more complex than just using usestate, usecontext can be used
+to manage global state that need to be accessed and modified from multple components. its often used in conjuction with the usereducer hook to create a predictable state management solution similar to libraries like redux.
+
+redux replacement: for small application, you might choose to use usecontext and the useeducer hook as simpler alternative to redux for managing state.
+
+dependency injection: you can use usecontext to provide services or dependencies to components for eg: you might havea configcontext that provides configuraiton.
+
+custom theming: if your app require custom theming based on user preference , you can use usecontext to provide the theme setting to different parts of the app.
+
+caching and data fetching: you can use usecontext to manage cached data or api responses that mutiple components might need access to
+
+//react context api
+context api is a way to manage state and share data throughout your component tree without the need to pass props manually at every level. it's particularly useful for passing down global data or application wide settings.
+the primary use cases of contextapi are:
+provider and consumer relationship
+the context api revolves around the concept of a provider component and consumer components.
+the provider component is used to wrap a portion of your component tree, making the data available to all nested components.
+creating a context:
+create a context using the createcontext function from the react module. eg:
+const mycontext = react.createContext(defaultvalue);
+
+provider components:
+wrap components with the provider to give them access to the context data.
+pass the data you want to share as a prop to the provider.
+
+consuming the context: use the consumer component or the usecontext hok to access the context data.
+
+default value:
+the createcontext function accepts a default value as an argument. this value is used when a component doest have a matching provider in its ancestor tree.
+eg: const myContext = react.createContext(default value);
+
+updating context data:
+context data can be updated by modifying the state within the provider component when the context data changes, all component consuming that context will re-render.
+
+performance optimization: tp prevent unnecessary re-renders, you can use the react.memo high order component or the usememo hook to wrap components that consume context data.
+
+mulitple contexts:
+you can have multiple context providers and consumers in the same component tree.each context works independently and components can consume data from multiple contexts.
+caveats and considerations:
+context is best suited for data that is ruly global or needs to be accessed by multiple components at different levels.
+avoiding using context for fine grained state that is only needed within a few closely related components.
+
+// useLayoutEffect
+it is a react hook that is similr to the useEffect hook, but it fires synchronously after all dom mutations. its useful when you need to perform some actions that rely on the most up to date dom layout and before the browser paints to the screen.
+
+the primary use cases for useLayoutEffect are:
+useLayoutEffect is a react hook that used to perform side effects after renderin and before the browser layout and paint process.
+its very similar to the useeffect hook but fires synchronously after all do mutations have been processed,
+whereas useeffect fires asynchronous after rendering.
+
+its often used for actins that depend on accurate dom measurements or that need to update the ui before its visually presented to the user.
+
+//useSyncExternalStore
+it is a react hook that lets you subscrive to an external store.
+const snapshot = useSyncExternalStore(subscribe, getSnapShot, getServerSnapshot?);
+the primary use cases for useSyncExternalStore are:
+call useSyncExternalStore at the top level of your component to read a value from an external data store,
+it returns the snapshot of the data in the store. you need to pass two functions as arguements:
+the subscribe function should subscribe to the store and return a function that unsubscribes.
+the getSnapShot function should read a snapshot of the data from the store.
+usage:
+subscribing to an external store.
+most of your react components will only read data from their props, state, and context, however sometimes a component need to read some data from store outside of react that changes over time this includes.
+third party state managment libraries that hold state outside of react.
+browser apis that expose a mutuable value and events to subscribe to its changes.
+const snapshot = useSyncExternalStore(subscribe, getSnapShot,getServerSnapshot?);
+callback function(subscribe), getSnapShot(current value store), getServerSnapshot return server rendering
+
+//useTransition Hook
+it a react hook that lets you update the state without blocking the UI.
+const[isPending, StartTransition] = useTransition()
+
+the primary use cases for useTransition are:
+call useTransition at the top level of your component to mark some state updates sas transitions.
+useTransition returns an array with exactly two items.
+the isPending flag that tells you whether there is a pending tansition.
+the startTransition function that lets you mark a state update as transition.
+
+//use DeferredValue Hook
+it is a react hook that lets you defer updating a part of the UI.
+const deferredValue = useDeferredValue(value);
+the primary use cases for useDeferredValue are:
+call useDeferredValue at the top level of your component to get a deferred version of that value.
+Deferring re-rendering for a part of the UI.
+you can also apply useDeferredValue as a performance optimization.it is useful when a part of your UI is slow to re-render, there's no easy way to optimize it, and you want to prevent it from blocking the rest of the UI.
+
+react UseId Hook
+
+useId is a react hook for generating unique id's that can be passed to accessiblity attributes.
+const id = useId()
+
+the primary use cases for useId are:
+call useId at the top level of your component to generate a unique id:
+useId returns a unique ID string associated with this particulary useId call in this particular component.
+if you need to give Ids to multiple related elements, you can call useId to generate a shared prefix for them.
+https://youtu.be/rPPr5bqPYr0?list=PLdPwRNmUlk0lybMtRRF5xrvFd1UEo6UAR&t=198
