@@ -1099,4 +1099,164 @@ the primary use cases for useId are:
 call useId at the top level of your component to generate a unique id:
 useId returns a unique ID string associated with this particulary useId call in this particular component.
 if you need to give Ids to multiple related elements, you can call useId to generate a shared prefix for them.
-https://youtu.be/rPPr5bqPYr0?list=PLdPwRNmUlk0lybMtRRF5xrvFd1UEo6UAR&t=198
+
+//React custom hook
+it allows you to encapsulate logic and share it across different components. custom hooks are just js function that start with the word "use" and can call other hooks if needed.
+
+the primary use cases for custom hook are:
+custom hooks enable you to extract and share specific pieces of logic(for eg: fetching data, handling form state) across multiple components.
+instead of duplicating the sam logic in different components you can centralize it in a custom hook and reuse it whenever needed.
+
+// react router v6
+it is a popular library for managing navigation and routing in react application .it helps you create a seamless user experience by allowing you to define different routes and their corresponding components.
+
+the primary use cases for react router v6 are:
+declarative routing : with v6, you define your routes using jsx components. instead of a <switch> component you now use the <Routes> component to declare your routes.
+Route Components: each route is represented by the <Route> component where you specify the path and the components to render when that path matchs.
+
+hooks-based approach: react router v6 heavily relies on react hooks. you use the useRoutes hook to handle the routing logic based on the declared routes.
+
+nesting routing: v6 improves the support for nested routing, making it easier to create complex layouts and nested ui structures.
+
+route Parameters: route parameters are now accessed using hooks. you use the useParams hook to retrieve parameters from the url.
+
+navigation: for navigation, you use the useNavigate hook, which provides a function to programmatically navigate to different routes. this simplifies navigation compared to the older history object.
+
+layouts and layout routes:v6 introduces the concept of layout routes. allowing you to define common layouts that wrap specific sets of routes. this is useful for creating consistent ui structures.
+
+No Render Props: Unlike the previous version, v6 get rid of the render props pattern, instead, all routing related components are hooks. this simplifies the code and make it more in line with modern react patterns.
+
+typescript support. react router dom v6 offers improved typescript support out of the box making it easier to catch routing  related erros during development.
+
+//what is links , navbar, anchor tag ?
+Links: in reacter router, a <link>  component is used to navigate between different views or components in your application .it renders an anchor( <a>) tag with the appropriate href attribute, allowing users to click on the link 
+and navigate to the specified route without causing a full page reload. this helps in creating a single page application experience.
+
+Navbar: A navigation bar(often abbreviated as "navbar") is a common user interfae element used to provide navigation links or mrenus within  web application. it's typically positioned at the top of a webpage and contains links to various sections or pages of the application. a navbar can be implemented using html,css and javascript int he context of react router a navbar would likely consist of <link> components to facilitate navigation between different routes.
+
+Anchor tag: An anchor (<a>) tag is a fundamental html element used to create hyperlinks. in the context of react router while anchor tags can still be used for navigation, using the <link> component provided by react router is generally preferred. this is because <link> components manage navigation without causing full page reloads,leading to a smoother user experience in single page applications
+
+//404 page not found
+      <Route path="/*" element={<h1>404 page</h1>} />
+
+//Dynamic Routes and params
+routes are perhaps the most important part of a react router app.they couple url segments to components, data loading and data mutations. through route nesting, complex application layouts and data dependencies become simple and declarative.
+
+the primary  use cases for eact router
+dynamic routes: dynamics routes in react router allow you to create route with variable segments in the url. these variable segments can change and you can capture these changes to render different components or content based on the url.
+
+parameter (param): parameters are values extracted from dynamic segments in the url in react router, you can access these parameters through the useParams hook or the match object in class based components.
+
+Link and NavLink & ActiveClass
+the link and navlink components are used for navigation within your application. they allow you to create links to different routes in your react application, making it easy to build single page application with client side routing
+
+the primary use cases for react router v6 (link and navlink) are:
+link : is a component used to create a hyperlink that navigates to a different route in your application without causing a full page refresh.
+it is similar to the traditional html <a> tag, but it leverages the react router infrastructure tot handle routing
+
+NavLink: is a variation of link that provides addtional styling and behavior for the currently active route. it adds a class name to the active link, allowing you to apply specific styles to it.
+you can also customize the Navlink to add your own active styles and behavior using the activeClassName and isActive props.
+
+UseSearchParams
+the UseSearchParams hook is used to read and modify the query string in the rul for the current location. like react own useState hook, UseSearchParams returns an array of two values: the current location's search params and a function that may be used to update them. just as react's usestate hook, setSearchParams also supports functional updates. therefor you may provide a function that takes a setSearchParams and returns an updated version.
+
+the primary use cases for react router v6 (UseSearchParams) are:
+the useparams hook will return an object with key / value pairs.
+the useparams hook is used to read the dynamic params from the current url that were matched by <Route path>
+http://localhost:5173/geturl?name=%22sam%22&city=%22ktm%22
+
+// useNavigate?
+
+useNavigate hook is used to programmatically navigate between different routes in your application. this hook allows you to obtain a function that you can call to nviate to a specific route.
+
+the primary use cases for react router v6 (useNavigate) are:
+
+handling user Interactions: you can use useNavigate to respons to user interactions like button clicks, form submissions. or any other events. and then navigate the user to the appropriate route based on those interactions.
+
+programmatic redirections: it allows you to implement programmatic redirection. for example you can check some conditions or user authentication status and then decide whether to navigate the user to a specific route or back to the login page.
+
+Conditional Routing: you can conditionally render components or navigate based on certin conditions in your application logic. for instance, if a user is not authenticated, you can navigate them to a login page and if they are authenticated, you can take tehm to the main dashboard.
+
+integration with state management: useNavigate can be used in conjunction with state management libraries(eg. redux or react context) to trigger navigation based on changes in application state.
+
+redirect after form submissions: after a form is submitted successfully, you can use useNavigate to redirect the user to a success page or another relevant page.
+
+implementing navigation guards: you can implement navigation guards or middleware by using useNavigate to control access to certain routes or to prevent navigation under specific conditions(eg. confirming unsaved changes before leaving a page). //home.jsx
+
+//nested routing
+it allows you to define a hierarchical structure for your application routes.this means that you can have routes within routes, creating a nested layout for your components. this is useful for building complex user interfaces where different sections of your application have their own set of routes.
+the primary use cases for react router (nesting routing) are:
+rect router dom v6 provide a clean and flexible way to implement nested routing .
+this is particularly useful when you have a layout with mulitple sections or views each requiring its own set of routes.
+use outlets for submenu 
+
+//useLocation Hook
+it a custom hook that allow you to access the current location object in your react components. the location object represents the current URL and can be used to extract information about the pathname,search parameters and more.this hook is particularly useful for building dynamic and responsive components that respons to changes in the URL.
+
+the primary use cases for react router(uselocation) are:
+accessing current URL information: the most fundamental use case is to access information about the current URL. you can extract details such as the pathname, search parameter, hash and state associated with the current location.
+
+conditionalrendering: you can use the useLocation hook to conditionally render components or UI elements based on the current route. this is useful for showing or hiding components or modifying their behaviour based on the route.
+
+Active Navigation Links: you can highlight or mark navigation links as "active" based on the current route. this helps users easily identify wich page they are on in your navigation menu.
+
+tracking route changes: you can use useLocation in combination with other hooks like useEffect to track route changes and perform actions when a specific route is entered or exited.
+
+query parameters handling: when dealing with query parameters in URLsm you can use useLocation to access and parse query parameters for further processing or filtering data.
+
+customNavigation Logic: in some cases, you may need custom navigation logic based on the current route. you can use useLocation to implement conditional navigation or to trigger navigation programmatically.
+http://localhost:5173/dashboard?name=%22sam%22?#header
+
+
+/react fetch api
+restful api (represntational state transfer api), a "method" refers to an http request method or ver used to perform opertions on resource. these http methods are part of the http protocol and are used to interact  with resources(eg: data or objects) on a server.
+
+the primary http methods used in restful apis are:
+GET: THis method is used to retrieve data from the server. it should only retrieve data and should not modify the state of the server.
+
+POST: Post is used to create a new resource on the server. it typically involves sending data tot eh server for processing and storage.
+
+PUT: is is used to update an existing resource on the server or create if it it doesnt exist. it replaces the entire resources with the new data provided.
+
+Patch: it is used to partially update an exisiting resources. it only modifies the specific fields provided in the request , leaving other fileds unchanged.
+
+DELETE: DELETE is used to remove a resource from the server. After a successful DLETE request, the resource should no longer be accessible.
+
+these http methods, along with the URL(Uniform Resource Locator) or URI(Uniform Resource Identifier) of the resource. form the basis of how restful apis are designed they allow clients (applications or systems) to perform CRUD (Create, read, Update, delete) operations on resouces exposed by the api.
+
+the fetch api is a built in web api in javscript that allos you to make network request. such as fetching data from a server. when using the fetch api in a react functional component, you can integrate it with your component's lifecycle to handle data fetching and rendering
+
+the primary use cases for fetch api are:
+making GET Requests: Fetching data from a  server or an api use the fetch function to make a GET requet and handle the response.
+
+Making post request: sending data to a server, use the fetch function with the post method and provide the body with the data to send.
+
+Handling Errors: Handling erros that may occur during an HTTP request. Check the response status and use catch to handle errors.
+
+
+post method in react // for inserting
+
+Put Method in react // for updating
+
+delete method in react api
+
+//react axios npm
+
+it is a popular js library that is commonly used in react applications for making http request to external resources, such as apis or web services.it provides a simple an convenient way to send http requests and handle responses.
+
+the primary use cases for axios are:
+
+making http requests: it can be used to make GET, POST, PUT, DELETE, and other types of http requests. it abstracts the underlying XMLhttpRequest or fetch api, providing a more user-friendly api.
+
+Handling Promises: axios returns promises, making it easy to work with asynchronous code and handle response using .then() and catch()
+
+Request adn response interceptors: axios allows you to intercept and modify requests and responses globally or for specific requests. this can be useful for adding authentication tokens, error handling or logging
+
+setting  headers: you can easily set custom headers for your requests, which is often necessary for authentication or pssing additional information to the server.
+
+canceling requests: axios allows you to cancel requests using a cancel token. this can be helpful for handling user interaction, such as canceling a request when a component unmounts.
+
+handling errors: axios provides a structured way to handle errors and responses, making it easier to display error messages to users or log errors for debugging.
+
+Use in react applications: axios is commonly used in react applications to fetch data from apis update the state, and render ui components based on the fetched data.
+
